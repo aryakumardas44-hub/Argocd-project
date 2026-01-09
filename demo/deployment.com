@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+  labels:
+    app: tomcat_app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat_app
+  template:
+    metadata:
+      labels:
+        app: tomcat_app
+    spec:
+      containers:
+        - name: tomcat
+          image: tomcat:9.0
+          ports:
+            - containerPort: 8080
